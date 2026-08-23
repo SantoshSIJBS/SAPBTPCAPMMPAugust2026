@@ -1,0 +1,94 @@
+### All services of Purchase Order Application
+http://localhost:4004/odata/v4/catalog
+
+### Get records from Products service
+http://localhost:4004/odata/v4/catalog/ProductSrv
+
+### Get records from Employee service
+http://localhost:4004/odata/v4/catalog/EmployeeSrv
+
+### Get the no. of records of employee service
+http://localhost:4004/odata/v4/catalog/EmployeeSrv/$count
+
+
+### Get first 10 records
+http://localhost:4004/odata/v4/catalog/EmployeeSrv?$top=10&$skip=10
+
+### Select specific columns from the service - Restrict data based on the columns
+http://localhost:4004/odata/v4/catalog/EmployeeSrv?$select=nameFirst,nameLast,phoneNumber,email,salaryAmount
+
+### Select specific columns from the service - Restrict data based on the columns
+http://localhost:4004/odata/v4/catalog/EmployeeSrv?$filter=gender eq 'M'&$filter=nameFirst eq 'John'
+
+### Insert an employee details into DB
+POST http://localhost:4004/odata/v4/catalog/EmployeeSrv
+Content-Type: application/json
+
+{
+    "Currency_code": "USD",
+    "ID": "02BD2137-0890-1EEA-A6C2-BB55C190911Z",
+    "accountNumber": "999888777",
+    "bankId": "510000091",
+    "bankName": "My Bank of Kolkata",
+    "email": "sourabh.ganguly@itelo.info",
+    "gender": "M",
+    "language": "E",
+    "loginName": "SGanguly",
+    "nameFirst": "Sourabh",
+    "nameInitials": null,
+    "nameLast": "Ganguly",
+    "nameMidlle": null,
+    "phoneNumber": "+1 994 314 012",
+    "salaryAmount": "76821.00"
+}
+
+### No of employees in the table
+GET http://localhost:4004/odata/v4/catalog/EmployeeSrv/$count
+
+### Update the salary of an employee
+PUT http://localhost:4004/odata/v4/catalog/EmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C190911Z
+Content-Type: application/json
+
+{
+    "Currency_code": "USD",
+    "salaryAmount": "105000.00"
+}
+
+### Remove employee info
+DELETE http://localhost:4004/odata/v4/catalog/EmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C190909A
+
+
+### Calling custom function
+GET http://localhost:4004/odata/v4/catalog/getHighestSalariesEmp()
+
+
+### Insert employee using custom action
+POST http://localhost:4004/odata/v4/catalog/createEmployee
+Content-Type: application/json
+
+{
+    "Currency_code": "USD",
+    "accountNumber": "999888777",
+    "bankId": "510000091",
+    "bankName": "My Bank of Mumbai",
+    "email": "virat.kohli@itelo.info",
+    "gender": "M",
+    "language": "E",
+    "loginName": "VKOHLI",
+    "nameFirst": "Virat",
+    "nameInitials": null,
+    "nameLast": "Kohli",
+    "nameMidlle": null,
+    "phoneNumber": "+1 994 314 000",
+    "salaryAmount": "76821.00"
+}
+
+###
+GET http://localhost:4004/odata/v4/catalog/POSrv
+
+
+###
+POST http://localhost:4004/odata/v4/catalog/POSrv/74867AD200E41EDBA5D8B0C98DC28052/discountPrice
+Content-Type: application/json
+
+{}
