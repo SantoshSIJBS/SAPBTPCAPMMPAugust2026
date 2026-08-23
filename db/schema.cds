@@ -81,7 +81,7 @@ context transaction {
             LIFECYCLE_STATUS : String(1) @(title: '{i18n>LIFECYCLE_STATUS}');
             OVERALL_STATUS   : String(1) @(title: '{i18n>OVERALL_STATUS}');
             // Unmanaged Association - to Many
-            Items            : Association to many PurchaseItems
+            Items            : Composition of many PurchaseItems
                                    on Items.PARENT = $self;
     }
 

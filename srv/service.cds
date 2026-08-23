@@ -21,6 +21,7 @@ service CatalogService {
 
     entity BPSrv as projection on db.master.BusinessPartners;
 
+    @odata.draft.enabled: true
     entity POSrv as projection on db.transaction.PurchaseOrders{
         *,
         case OVERALL_STATUS
