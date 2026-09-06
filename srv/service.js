@@ -1,8 +1,4 @@
 module.exports = cds.service.impl(async function () {
-    // We need to use generic handlers to design your custom business logic
-    //      1. this.before()    : This generic handler is used to perform the pre-validations / pre-check.
-    //      2. this.on()        : This generic handler is used to perform database operations.
-    //      3. this.after()     : This generic handler is used to perform post database operation activities.
 
     // Step-1 : Get the object from ODATA entities
     let { EmployeeSrv, POSrv } = this.entities;
