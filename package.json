@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@cap-js/hana": "^3.0.2",
-    "@sap/cds": "^9.9.3"
+    "@sap/cds": "^10.0.6",
+    "@sap/xssec": "^4.15.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4",
@@ -20,5 +21,15 @@
   ],
   "sapux": [
     "app/poapplication"
-  ]
+  ],
+  "cds": {
+    "server": {
+      "index": true
+    },
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    }
+  }
 }

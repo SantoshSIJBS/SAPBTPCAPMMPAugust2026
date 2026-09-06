@@ -5,7 +5,8 @@ using {
 } from '@sap/cds/common';
 
 using {purchaseordersappl.reuse as reuse} from '../db/common';
-service CatalogService {
+
+service CatalogService @(requires: 'authenticated-user'){
 
     entity ProductSrv as projection on db.master.Products;
 
@@ -17,11 +18,14 @@ service CatalogService {
     }
     entity EmployeeSrv as projection on db.master.Employees;
 
-    entity AddressSrv as projection on db.master.Addresses;
+    entity AddressSrv @(restrict: [
+        {grant: ['READ'], to : 'Viewer', where: 'COUNTRY = $user.country'},
+        {grant: ['WRITE'], to : 'Admin'}
+    ]) as projection on db.master.Addresses;
 
     entity BPSrv as projection on db.master.BusinessPartners;
 
-    @odata.draft.enabled: true
+    //@odata.draft.enabled: true
     entity POSrv as projection on db.transaction.PurchaseOrders{
         *,
         case OVERALL_STATUS
